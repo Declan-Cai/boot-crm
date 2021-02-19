@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.core.dao.OrderDao">
+	<!-- 根据登录的用户查询其所有的订单 -->
+	<select id="selectOrderList" parameterType="String" resultType="orders">
+	
+	select * from orders where cust_name=#{cust_name}
+	
+	</select>
+	
+	<!-- 查询客户总数 -->
+	<select id="selectOrderListCount" parameterType="orders" 
+                                                 resultType="Integer">
+		select count(*) from orders
+		
+	</select>
+	
+	<!-- 创建订单 -->	
+	<insert id="createOrder">
+	insert into orders set cust_name=#{cust_name},order_cost=#{order_cost},pay_type=#{pay_type}
+	</insert>
+	
+	<!-- 删除订单 -->
+	<delete id="deleteOrder">
+	delete from orders where order_id=#{order_id}
+	</delete>
+	
+	<!-- 查询所有订单 -->
+	<select id="selectAllOrder" resultType="orders">
+	select * from orders
+	</select>
+	
+	<!-- 修改设置日期、经办人 -->
+	<update id="updateOrder">
+	update orders set pay_date=#{pay_date},due_date=#{due_date},order_operator=#{order_operator} where order_id=#{order_id}
+	</update>
+	
+	<!-- 根据id查询所有订单信息 -->
+	<select id="selectAllOrderById" parameterType="Integer" resultType="orders">
+	select * from orders where order_id=#{order_id}
+	</select>
+	
+	<!-- 查询最大日期 -->
+	<select id="selectMaxDate" parameterType="String" resultType="Date" >
+	select max(due_date) from orders where cust_name=#{name}
+	</select>
+	
+	<!-- 通过名字查询所有订单 -->
+	<select id="selectAllOrderByName" parameterType="String" resultType="String">
+	select order_operator from orders where cust_name=#{cust_name}
+	</select>
+	
+</mapper>
