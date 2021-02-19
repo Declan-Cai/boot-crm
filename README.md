@@ -1,7 +1,7 @@
 # boot-crm
-客户关系管理系统
-基于SpringBoot的客户关系管理系统
 
+基于SpringBoot的客户关系管理系统<br>
+本项目为课程的课后实训<br>
 本项目参考自黑马程序员出版的《JavaEE企业级应用开发教程（Spring+SpringMVC+MyBatis）》
 
 ### 1.环境需求
